@@ -18,3 +18,9 @@
 - Presentación de los resultados
 
 ## Links documentación
+
+- Colocar links de uso de algortimos o técnicas utilizadas.
+
+## Notas:
+
+Recuerda que se debe presentar la solución al problema en python y la presentación es del proyecto y del desarrollador como persona.

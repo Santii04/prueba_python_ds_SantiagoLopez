@@ -23,4 +23,4 @@
 
 ## Notas:
 
-Recuerda que se debe presentar la solución al problema en python y la presentación es del proyecto y del desarrollador como persona.
+Recuerda que se debe presentar la solución al problema en python y la presentación es del proyecto y del desarrollador como persona, se debe hacer un fork a este repositorio y compatir el link.

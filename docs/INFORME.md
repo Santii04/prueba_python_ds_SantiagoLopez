@@ -41,7 +41,7 @@ Se opta por usar un modelo de redes neuronales convolucionales, pues basado en l
 * Dropout Layer: Reduce el sobreajuste para ignorar aleatoriamente características muy especifícas y así aprender principalmente generalidades.
 * Output Layer (Dense): Produce las probabilidades de pertenecer la noticia a cada categoría. Usa una función softmax para convertir los valores de salida en una probabilidad entre 0 y 1
 
-** Parámetros del modelo
+**Parámetros del modelo**
 * Se permite un vocabulario de hasta 15.000 palabras
 * Se permite hasta una longitud de 50 palabras por secuencia
 * Se determina un tamaño de lote de entrenamiento de 32

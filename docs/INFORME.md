@@ -49,16 +49,20 @@ Se opta por usar un modelo de redes neuronales convolucionales, pues basado en l
 
 **4. Respuesta a preguntas**
 
-* 1.¿Se pueden catalogar las noticias con la descripción y los titulares? Compare su clasificación con las categorías incluidas en el set de datos.
+* 1. ¿Se pueden catalogar las noticias con la descripción y los titulares? Compare su clasificación con las categorías incluidas en el set de datos.
+
 R./ Se puede lograr percibir particularidades de cada categoría como en "Crime", que se llega a implementar testimonios, palabras que aluden a tragedias o que pueden considerarse "crudas", de la misma forma en otras categorías como "Comedy", que se notan usos de lenguaje más diverso, ameno y allegado a las personas. Dado a esto se puede determinar que si es posible catalogar noticias en base a su descripción y titular
 	
-* 2.¿Existen estilos de escritura asociados a cada categoría?
+* 2. ¿Existen estilos de escritura asociados a cada categoría?
+
 R./ Como se menciona en el punto anterior, en el set de datos, se logra encontrar suficiente información como para determinar ciertos patrones que se asocian al estilo de escritura que se lleva en cada categoría (Uso de lenguaje crudo en la categoría de crimen...)
 	
 * 3. ¿Qué se puede decir de los autores?
+
 R./ En el dataset es posible percatarse de ciertas tendencias entre los autores, asi como un poco de su relevancia en la categoría, esto basado en aspectos como, la cantidad de noticias que se encuentran a su nombre, la variedad que maneja (Como pasa entre categorías), y otros casos como que, los autores al parecer tienden a mantener un anonimato cuando se trata de World News
 	
 * 4. ¿Qué información útil se puede extraer de los datos?
+
 R./ Como se venía abarcando en los puntos anteriores, del dataset es posible extraer información referente a:
     *La relevancia de los autores, basado en la cantidad de veces que puede encontrarse aportes de un autor en una categoria
     *Versatilidad de los autores, según la variedad de las categorías en las que se desempeña

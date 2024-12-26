@@ -1,7 +1,10 @@
+from sklearn.metrics import classification_report, confusion_matrix
 import tensorflow as tf;
 from tensorflow import keras;
 from classes.dataManager import DataManager;
 import numpy as np;
+import matplotlib.pyplot as mplt;
+import seaborn as sbn;
 
 class MLModel:
 
@@ -151,3 +154,59 @@ class MLModel:
         predicted_category = category_mapping[predicted_category_idx]
         
         return predicted_category
+
+    def evaluateModel(model, test_data, category_mapping):
+        """
+        Evaluate the model on the test data using classification metrics
+        and visualize the confusion matrix.
+
+        Args:
+            model: The trained model.
+            test_data: The TF dataset with the test data.
+            category_mapping: A dictionary that maps indices to category names.
+        """
+        true_labels = []
+        predictions = []
+    
+        for x_batch, y_batch in test_data:
+            true_labels.extend(np.argmax(y_batch, axis=1))  # Get the real tags
+            pred_batch = model.predict(x_batch)  # Model predictions
+            pred_labels = np.argmax(pred_batch, axis=1)  # Select the class with the better probability
+            predictions.extend(pred_labels)
+    
+        true_labels = np.array(true_labels)
+        predictions = np.array(predictions)
+
+        unique_categories = np.unique(true_labels)
+        
+        predicted_categories = [category_mapping[idx] for idx in predictions]
+        true_categories = [category_mapping[idx] for idx in true_labels]
+
+        # Generate the classification_report (precisión, recall, F1-score)
+        print("Classification Report:\n")
+        print(classification_report(true_labels, predictions, target_names=[category_mapping[idx] for idx in unique_categories], labels=unique_categories))
+
+        # Generate the confussion matrix
+        cm = confusion_matrix(true_labels, predictions)
+    
+        mplt.figure(figsize=(10, 8))
+        sbn.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=category_mapping.values(), yticklabels=category_mapping.values())
+        mplt.title("Confusion Matrix")
+        mplt.xlabel("Predicted Category")
+        mplt.ylabel("True Category")
+        mplt.savefig("docs/graphs/model_evaluation.png")  # Save the graphic
+        mplt.close()  # Close the figure
+
+    def historyLearning(history):
+        """Generate a graphic for the learning history of the model trained (loss based)
+
+        Args:
+            History of the model learning
+        """
+        mplt.figure(figsize=(10,8))
+        mplt.title("Learning Historial")
+        mplt.xlabel("# Epoch")
+        mplt.ylabel("Loss magnitude")
+        mplt.plot(history.history["loss"])
+        mplt.savefig("docs/graphs/history_learning.png")
+        mplt.close()

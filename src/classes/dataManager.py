@@ -1,5 +1,5 @@
 import pandas as pd;
-import matplotlib as mplt;
+import matplotlib.pyplot as mplt;
 import seaborn as sbn;
 import re;
 from tensorflow.keras.layers import TextVectorization;
@@ -39,12 +39,40 @@ class DataManager:
         print("Categories Distribution: \n");
         print(data['category'].value_counts());
 
-        mplt.figure(figSize=(10, 6));
+        mplt.figure(figsize=(10, 6));
         sbn.countplot(data=data, y='category', order=data['category'].value_counts().index);
         mplt.title("Categories Distribution");
         mplt.xlabel("# News");
         mplt.ylabel("Category");
-        mplt.show();
+        mplt.savefig("docs/graphs/category_distribution.png")  # Save the graphic
+        mplt.close()  # Close the figure
+
+    def exploreMultivariateAnalysis(data):
+
+        """Do a data exploration focused on the relation betwwen the headline lenght and the categories, and the short_description length and the categories
+
+        Args:
+            data (pandas dataFrame readed): The data to be explored
+        """
+        
+        mplt.figure(figsize=(12, 8))
+        sbn.boxplot(x='category', y='headline_clean', data=data)
+        mplt.title('Distribution of Headline Length by Category')
+        mplt.xlabel('Category')
+        mplt.ylabel('Headline Length')
+        mplt.xticks(rotation=45)
+        mplt.savefig("docs/graphs/category_headline_distribution.png")  # Save the graphic
+        mplt.close()  # Close the figure
+
+        mplt.figure(figsize=(12, 8))
+        sbn.boxplot(x='category', y='short_description_clean', data=data)
+        mplt.title('Distribution of Short Description Length by Category')
+        mplt.xlabel('Category')
+        mplt.ylabel('Short Description Length')
+        mplt.xticks(rotation=45)
+        mplt.savefig("docs/graphs/category_description_distribution.png")  # Save the graphic
+        mplt.close()  # Close the figure
+
         
     #Exportable function
     def cleanText(text: str):
